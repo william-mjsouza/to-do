@@ -1,10 +1,11 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}   <!-- extends deve ser a primeira tag num template -->
+{% load static %}   <!-- Sempre colocar esse load static se for usar um arquivo .css-->
 
 {% block title %}Página Inicial{% endblock %}
 
-{% block content %}
-<div class="text-center">
+{% block main %}
+<section class="text-center">
     <h1>Bem-vindo à Página Inicial</h1>
     <p>Esta é a página inicial do meu site, construída com Django!</p>
-</div>
+</section>
 {% endblock %}

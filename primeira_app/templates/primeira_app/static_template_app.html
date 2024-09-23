@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}   <!-- extends deve ser a primeira tag num template -->
 {% load static %}   <!-- Sempre colocar esse load static se for usar um arquivo .css-->
 
 {% block title %}Página Estática{% endblock %}
@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="{% static 'primeira_app/css/app_static_page_styles.css' %}">   <!-- Colocar um nome diferente de styles no arquivo .css (para não dar conflito com o arquivo .css global) -->
 {% endblock %}
 
-{% block content %}
-<h1>Este é um Tamplate Estático da App</h1>
-<p>Não há tags especiais do Django neste documento HTML</p>
+{% block main %}
+<section>
+    <h1>Este é um Tamplate Estático da App</h1>
+    <p>Não há tags especiais do Django neste documento HTML</p>
+</section>
 {% endblock %}

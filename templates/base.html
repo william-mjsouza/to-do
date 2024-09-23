@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Meu Site{% endblock %}</title>
-    <!-- Incluindo o arquivo CSS global -->
+    <!-- Inclui o arquivo CSS global -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <!-- Incluindo o arquivo CSS local a app (para sobrescrever o CSS da main do global) -->
+    <!-- Inclui o arquivo CSS local a app (para sobrescrever o CSS da main do global) -->
     {% block extra_css %}
     <!-- Área que será substituída pelo link CSS das páginas filhas -->
     {% endblock %}
@@ -18,8 +18,8 @@
         {% include 'nav.html' %}  <!-- Inclui a navbar -->
     </header>
     <main class="container">
-        {% block content %}
-        <!-- Área que será substituída pela main das páginas filhas -->
+        {% block main %}
+        <!-- Área que será substituída pelas seções da main das páginas filhas -->
         {% endblock %}
     </main>
     
