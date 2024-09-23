@@ -1,11 +1,9 @@
 from django.contrib import admin
-from django.urls import path
-# Importar a view da app que foi criada
-from nome_app.views import home
+from django.urls import include, path
 
-
-# Aqui ficam todas as rotas de todas as apps
+# Aqui ficam todas as rotas do projeto
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home), # Quando tiver só o / na URL do site, é chamada a função home
+    path('', include('core.urls')),  # Inclui as URLs da app 'core' para a home page
+    path('nome_app/', include('nome_app.urls')),  # Inclui as URLs da app
 ]
