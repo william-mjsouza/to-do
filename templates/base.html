@@ -1,15 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
+    {% load static %}  <!-- Adicione esta linha para usar o CSS que está em static/css -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Meu Site{% endblock %}</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo o arquivo CSS global -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <!-- Incluindo o arquivo CSS local a app (para sobrescrever o CSS da main do global) -->
+    {% block extra_css %}
+    <!-- Área que será substituída pelo link CSS das páginas filhas -->
+    {% endblock %}
 </head>
 <body>
-    {% include 'nav.html' %}  <!-- Inclui a navbar -->
-    <div class="container">
-        {% block content %}{% endblock %}  <!-- Área que será substituída nas páginas filhas -->
-    </div>
+    <header>
+        <p class="brand">Meu Site</a>
+        {% include 'nav.html' %}  <!-- Inclui a navbar -->
+    </header>
+    <main class="container">
+        {% block content %}
+        <!-- Área que será substituída pela main das páginas filhas -->
+        {% endblock %}
+    </main>
+    
+    {% include 'footer.html' %} <!-- Inclui o footer -->
 </body>
 </html>

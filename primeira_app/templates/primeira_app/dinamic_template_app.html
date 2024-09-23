@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}   <!-- Sempre colocar esse load static se for usar um arquivo .css-->
+
+{% block title %}Página Dinâmica{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/app_dinamic_page_styles.css' %}">   <!-- Colocar um nome diferente de styles no arquivo .css (para não dar conflito com o arquivo .css global) -->
+{% endblock %}
+
+{% block content %}
+<h1>Bem-vindo, {{ nome }}!</h1>
+<p>Você tem {{ idade }} anos e mora em {{ cidade }}.</p>
+{% endblock %}

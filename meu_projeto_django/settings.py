@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# Toda vez que uma app for criada, ela deve ser adicionada a essa lista (nome_da_app.apps.nome_da_classe_de_confguraçao)
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'nome_app.apps.NomeAppConfig',  # Adiciona a app
-    'core.apps.CoreConfig', # Adiciona a app
+    'primeira_app.apps.PrimeiraAppConfig',  # Adiciona a app
+    'core.apps.CoreConfig',                 # Adiciona a app
 ]
 
 MIDDLEWARE = [
@@ -106,9 +106,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'pt-br'
+LANGUAGE_CODE = 'pt-br'             # Idioma português do Brasil
 
-TIME_ZONE = 'America/Sao_Paulo'
+TIME_ZONE = 'America/Sao_Paulo'     # Horário de São Paulo
 
 USE_I18N = True
 
@@ -118,7 +118,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'static/'                      # Para poder criar arquivos .css para estilizar os templates locais das apps
+STATICFILES_DIRS = [BASE_DIR / "static"]    # Para poder usar o arquivo .css global para estilizar o template global
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
