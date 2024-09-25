@@ -4,11 +4,12 @@
 {% block title %}Página Estática{% endblock %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'primeira_app/css/app_static_page_styles.css' %}">   <!-- Colocar um nome diferente de styles no arquivo .css (para não dar conflito com o arquivo .css global) -->
+    <link rel="stylesheet" href="{% static 'primeira_app/css/app_static_page_styles.css' %}?v={{ STATIC_VERSION }}">   <!-- Colocar um nome diferente de styles no arquivo .css (para não dar conflito com o arquivo .css global) -->
 {% endblock %}
 
 {% block main %}
 <section>
+    <!-- Inclua aqui as sections personalizadas para esse template dessa app -->
     <h1>Este é um Tamplate Estático da App</h1>
     <p>Não há tags especiais do Django neste documento HTML</p>
 </section>

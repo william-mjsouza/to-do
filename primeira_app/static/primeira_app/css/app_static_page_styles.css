@@ -1,12 +1,4 @@
 /* Estilo para o conteúdo principal da app (sobrescreve o global) */
 .container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-
     background-color: rgb(223, 185, 60);
 }

@@ -4,11 +4,17 @@
 {% block title %}Página Dinâmica{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'primeira_app/css/app_dinamic_page_styles.css' %}">   <!-- Colocar um nome diferente de styles no arquivo .css (para não dar conflito com o arquivo .css global) -->
+<link rel="stylesheet" href="{% static 'primeira_app/css/app_dinamic_page_styles.css' %}?v={{ STATIC_VERSION }}">   <!-- Colocar um nome diferente de styles no arquivo .css (para não dar conflito com o arquivo .css global) -->
+{% endblock %}
+
+{% block nav %}
+    <!-- Inclua aqui a navbar personalizada para esse template dessa app -->
+    {% include 'nav.html' %}
 {% endblock %}
 
 {% block main %}
 <section>
+    <!-- Inclua aqui as sections personalizadas para esse template dessa app -->
     <h1>Bem-vindo, {{ nome }}!</h1>
     <p>Você tem {{ idade }} anos e mora em {{ cidade }}.</p>
 </section>

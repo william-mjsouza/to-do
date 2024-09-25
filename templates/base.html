@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Meu Site{% endblock %}</title>
     <!-- Inclui o arquivo CSS global -->
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}?v={{ STATIC_VERSION }}"> <!-- ?v={{ STATIC_VERSION }} = Força a atualização do CSS no navegador (evita bugs) -->
     <!-- Inclui o arquivo CSS local a app (para sobrescrever o CSS da main do global) -->
     {% block extra_css %}
     <!-- Área que será substituída pelo link CSS das páginas filhas -->
@@ -15,7 +15,9 @@
 <body>
     <header>
         <p class="brand">Meu Site</a>
-        {% include 'nav.html' %}  <!-- Inclui a navbar -->
+        {% block nav %}
+            {% include 'nav.html' %}  <!-- Inclui a navbar padrão -->
+        {% endblock %}
     </header>
     <main class="container">
         {% block main %}

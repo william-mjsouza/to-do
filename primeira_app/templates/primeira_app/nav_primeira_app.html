@@ -1,4 +1,4 @@
-<!-- Componente navbar padrão -->
+<!-- Componente navbar personalizado da app -->
 <nav class="navbar">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -9,7 +9,10 @@
                 <a class="nav-link" href="{% url 'index' %}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'primeira_app' %}">Primeira App</a>
+                <a class="nav-link" href="{% url 'pagina_estatica' %}">Template Estático</a>
+            </li>
+            <li class="nav-item"></li>
+                <a class="nav-link" href="{% url 'pagina_dinamica' %}">Template Dinâmico</a>
             </li>
         </ul>
     </div>
