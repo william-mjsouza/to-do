@@ -1,4 +1,5 @@
-from django.shortcuts import render     # Biblioteca que permite renderizar um tamplate (arquivo .html)
+from django.shortcuts import render, redirect     # Biblioteca que permite renderizar um tamplate (arquivo .html)
+from .models import ToDo
 
 # - Todas as views são criadas aqui;
 # - Cada view é uma função que recebe uma requisição HTTP e retorna uma resposta HTTP;
@@ -14,11 +15,16 @@ def render_static_template(request):
 
 def render_dinamic_template(request):
 
-    contexto = {
-        'nome': 'William',
-        'idade': 23,
-        'cidade': 'Recife'
-    }
+    # Buscando todas as tarefas do banco de dados e armazenando elas na variável todos
+    todos = ToDo.objects.all()  # todos é uma lista de objetos (instâncias da classe ToDo)
+
+    contexto = { 'todos': todos }
+
+    #contexto = {
+    #    'nome': 'William',
+    #    'idade': 23,
+    #    'cidade': 'Recife'
+    #}
 
     # Renderiza o HTML dinâmico substituindo as chaves do dicionário contexto que estão dentro de {{}} pelos seus valores
     return render(request, "primeira_app/dinamic_template_app.html", contexto)

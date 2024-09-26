@@ -20,3 +20,10 @@ class ToDo(models.Model):
     deadline = models.DateTimeField(null=False, blank=False) # usuário é que define a data (não pode ser automático)
     # Data de finalização da tarefa
     finished_at = models.DateTimeField(null=True, blank=False) # Pode ser nulo pro usuário preencher depois
+
+    # Método para criar uma tarefa a partir de dados recebidos
+    @classmethod
+    def create_task(cls, title, deadline):
+        task = cls(title=title, deadline=deadline)
+        task.save()  # Salva o objeto no banco de dados
+        return task

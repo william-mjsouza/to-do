@@ -1,3 +1,4 @@
-from django.db import models
+# Descomente esta importação caso queira criar um modelo para esta app no futuro
+#from django.db import models 
 
-# Create your models here.
+# Esta app tem apenas o Front-End (models.py é vazio).

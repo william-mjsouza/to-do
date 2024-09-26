@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'segunda_app/css/add_commitment_page_styles.css' %}">
+{% endblock %}
+
+{% block sections %}
+<section>
+    <h1>Compromisso - {{ selected_date }}</h1>
+    <form action="{% url 'adicionar_compromisso' %}?date={{ selected_date }}" method="post">
+        {% csrf_token %}
+        <div class="time-section">
+            <div>
+                <label for="hora_inicio">Hora - Início</label>
+                <input type="time" id="hora_inicio" name="hora_inicio" required>
+            </div>
+            <div>
+                <label for="hora_fim">Hora - Fim</label>
+                <input type="time" id="hora_fim" name="hora_fim" required>
+            </div>
+        </div>
+
+        <label for="processo">Processo vinculado ao compromisso</label>
+        <input type="text" id="processo" name="processo" required>
+
+        <label for="local">Local</label>
+        <input type="text" id="local" name="local" required>
+
+        <label for="observacoes">Observações</label>
+        <textarea id="observacoes" name="observacoes" rows="5"></textarea>
+
+        <button type="submit">Salvar</button>
+    </form>
+</section>
+{% endblock %}

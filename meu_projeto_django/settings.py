@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'primeira_app.apps.PrimeiraAppConfig',  # Adiciona a app
     'core.apps.CoreConfig',                 # Adiciona a app
+    'primeira_app.apps.PrimeiraAppConfig',  # Adiciona a app
+    'segunda_app.apps.SegundaAppConfig',    # Adiciona a app
 ]
 
 MIDDLEWARE = [
@@ -120,6 +121,23 @@ USE_TZ = True
 
 STATIC_URL = 'static/'                      # Para poder criar arquivos .css para estilizar os templates locais das apps
 STATICFILES_DIRS = [BASE_DIR / "static"]    # Para poder usar o arquivo .css global para estilizar o template global
+
+# Armazenamento de arquivos estáticos (diferente para desenvolvimento e produção)
+if DEBUG:
+    # Configuração padrão para desenvolvimento
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+    # Toda vez que for modificado algum arquivo .css, deve-se usar o comando: 
+    # python manage.py collectstatic
+else:
+    # Configuração para produção
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+
+# Configuração de ALLOWED_HOSTS
+if DEBUG:
+    ALLOWED_HOSTS = ['*']  # Permite qualquer host para testes em desenvolvimento
+else:
+    ALLOWED_HOSTS = ['meusite.com', 'www.meusite.com']  # Defina os hosts reais da sua aplicação em produção
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

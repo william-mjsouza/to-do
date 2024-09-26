@@ -4,17 +4,18 @@
 {% block title %}Página da Primeira App{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'primeira_app/css/primeira_app_styles.css' %}?v={{ STATIC_VERSION }}">   <!-- Colocar um nome diferente de styles no arquivo .css (para não dar conflito com o arquivo .css global) -->
+<link rel="stylesheet" href="{% static 'primeira_app/css/primeira_app_styles.css' %}">   <!-- Colocar um nome diferente de styles no arquivo .css (para não dar conflito com o arquivo .css global) -->
 {% endblock %}
 
 <!-- Inclua aqui a navbar personalizada para esse template dessa app -->
 {% block nav %}
-    {% include 'primeira_app/nav_primeira_app.html' %}  <!-- Inclui a navbar padrão -->
+    {% include 'primeira_app/nav_primeira_app.html' %}  <!-- Inclui a navbar da app -->
 {% endblock %}
 
-{% block main %}
+{% block sections %}
 <!-- Inclua aqui as sections personalizadas para esse template dessa app -->
 <section>
     <h1>Essa é a Minha Primeira App</h1>
+    <p>Ela possui dois templates: um estático e um dinâmico</p>
 </section>
 {% endblock %}

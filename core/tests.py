@@ -1,3 +1,3 @@
-from django.test import TestCase
+#from django.test import TestCase
 
-# Create your tests here.
+# Esta app tem apenas o Front-End (não precisa de testes automatizados).

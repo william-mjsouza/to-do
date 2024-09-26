@@ -9,14 +9,14 @@
 }
 
 /* Definir a altura total do body para 100vh */
-body {
+.body {
     display: flex;
     flex-direction: column;
     height: 100vh;  /* Por enquanto */
     font-family: Arial, sans-serif;
 }
 
-header {
+.header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -29,6 +29,10 @@ header {
     font-weight: bold;
     color: #333;
     
+}
+
+button {
+    display: none;
 }
 
 /* Estilo para a navbar */
@@ -101,4 +105,32 @@ header {
 
 .footer-links a:hover {
     text-decoration: underline;
+}
+
+@media (max-width: 450px) {
+    /* Efeito do Menu-Hambúrguer */
+    button {
+        display: block;
+        width: 20%;
+    
+        border: none;
+        background-color: transparent;
+    }
+    
+    .linha {
+        display: block;
+    
+        width: 66.66%;
+        height: 3.33%;
+    
+        margin: 10% auto;
+    
+        background-color: #ccc;
+    
+        cursor: pointer;
+    }
+
+    header nav {
+        display: none;
+    }
 }
