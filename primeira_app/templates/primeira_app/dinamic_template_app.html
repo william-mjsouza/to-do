@@ -1,15 +1,10 @@
 {% extends 'base.html' %}   <!-- extends deve ser a primeira tag num template -->
 {% load static %}   <!-- Sempre colocar esse load static se for usar um arquivo .css-->
 
-{% block title %}Página Dinâmica{% endblock %}
+{% block title %}Página Dinâmica{% endblock %}  <!-- Altere o título desse template aqui -->
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'primeira_app/css/app_dinamic_page_styles.css' %}">   <!-- Colocar um nome diferente de styles no arquivo .css (para não dar conflito com o arquivo .css global) -->
-{% endblock %}
-
-{% block nav %}
-    <!-- Inclua aqui a navbar personalizada para esse template dessa app -->
-    {% include 'nav.html' %}
 {% endblock %}
 
 {% block sections %}

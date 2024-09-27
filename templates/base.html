@@ -1,4 +1,4 @@
-{% load static %} <!-- Adicione esta linha para usar o CSS que está em static/css -->
+{% load static %} <!-- Sempre colocar esse load static se for usar um arquivo .css-->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -16,7 +16,7 @@
     <header class="header">
         <p class="brand">Meu Site</a>
         {% block nav %}
-            {% include 'nav.html' %}  <!-- Inclui a navbar padrão -->
+        {% include 'component/nav.html' %}  <!-- Inclui a navbar padrão -->
         {% endblock %}
     </header>
     <main class="container">
@@ -25,7 +25,7 @@
         {% endblock %}
     </main>
     
-    {% include 'footer.html' %} <!-- Inclui o footer -->
+    {% include 'component/footer.html' %} <!-- Inclui o footer -->
 
     <!-- Inclui o arquivo JS global -->
     <script src="{% static 'js/script.js' %}"></script>
