@@ -32,16 +32,25 @@ ALLOWED_HOSTS = []
 # Application definition
 # Toda vez que uma app for criada, ela deve ser adicionada a essa lista (nome_da_app.apps.nome_da_classe_de_confguraçao)
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'core.apps.CoreConfig',                 # Adiciona a app
-    'primeira_app.apps.PrimeiraAppConfig',  # Adiciona a app
-    'segunda_app.apps.SegundaAppConfig',    # Adiciona a app
+    'django.contrib.admin',                 # Admin do Django
+    'django.contrib.auth',                  # Autenticação e controle de usuários
+    'django.contrib.contenttypes',          # Content types para compatibilidade de models
+    'django.contrib.sessions',              # Gerenciamento de sessões
+    'django.contrib.messages',              # Sistema de mensagens
+    'django.contrib.staticfiles',           # Gerenciamento de arquivos estáticos
+
+    # Aplicações customizadas do projeto
+    'core.apps.CoreConfig',                 # Adiciona a app core
+    'primeira_app.apps.PrimeiraAppConfig',  # Adiciona a primeira app
+    'segunda_app.apps.SegundaAppConfig',    # Adiciona a segunda app
+    'terceira_app.apps.TerceiraAppConfig',  # Adiciona a terceira app
+
+    # Adiciona a API RESTful
+    'rest_framework',                       # Django REST framework para criação de APIs
+    'corsheaders',                          # Adiciona o suporte a CORS
+    'primeira_api_rest',                    # Sua app de API
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -51,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',                        # Adiciona a middleware do corsheaders para CORS
 ]
 
 ROOT_URLCONF = 'meu_projeto_django.urls'
@@ -122,24 +132,34 @@ USE_TZ = True
 STATIC_URL = 'static/'                      # Para poder criar arquivos .css para estilizar os templates locais das apps
 STATICFILES_DIRS = [BASE_DIR / "static"]    # Para poder usar o arquivo .css global para estilizar o template global
 
-# Armazenamento de arquivos estáticos (diferente para desenvolvimento e produção)
+# Configuração padrão para desenvolvimento
 if DEBUG:
-    # Configuração padrão para desenvolvimento
+    # Armazenamento de arquivos estáticos
     STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
     # Toda vez que for modificado algum arquivo .css, deve-se usar o comando: 
     # python manage.py collectstatic
+
+    # ALLOWED_HOSTS
+    ALLOWED_HOSTS = ['*']  # Permite qualquer host para testes em desenvolvimento
+# Configuração para produção
 else:
-    # Configuração para produção
+    # Arquivos estáticos
     STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
-# Configuração de ALLOWED_HOSTS
-if DEBUG:
-    ALLOWED_HOSTS = ['*']  # Permite qualquer host para testes em desenvolvimento
-else:
+    # ALLOWED_HOSTS
     ALLOWED_HOSTS = ['meusite.com', 'www.meusite.com']  # Defina os hosts reais da sua aplicação em produção
-
+ 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#CORS_ALLOW_ORIGINS_ALL = True  # Opção perigosa, qualquer domínio (site) poderia consumir nossa API
+
+# Adiciona as configurações do Corsheaders
+CORS_ALLOW_ORIGINS = [
+    'http://localhost:8080',
+    # Outros endereços durante o deploy (Azure, AWS ou qualquer outro, basta adicionar o endereço de hospedagem à lista)
+]
