@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Meu Site{% endblock %}</title>
+    <!-- Ícones das redes sociais -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Inclui o arquivo CSS global -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Inclui o arquivo CSS global -->
     <!-- Inclui o arquivo CSS local a app (para sobrescrever o CSS das sections do global) -->
@@ -12,21 +14,72 @@
     <!-- Área que será substituída pelo link CSS das páginas filhas -->
     {% endblock %}
 </head>
+<!-- Site com HTML Semântico: -->
 <body class="body">
+    <!-- <header>: Elementos como logo, navegação, títulos de seção e busca. -->
     <header class="header">
-        <p class="brand">Meu Site</a>
+        <!-- 
+        <a href="#" id="logo">LOGO</a>
+        -->
+        <h1 id="brand">Meu Site</h1>
+        <button id="openMenu" class="hamburguerMenu">&#9776;</button>
         {% block nav %}
-        {% include 'component/nav.html' %}  <!-- Inclui a navbar padrão -->
+        {% include 'components/nav.html' %}  <!-- Inclui a navbar padrão -->
         {% endblock %}
     </header>
+    <!-- <aside>: Conteúdo complementar ou relacionado (barra lateral, informações extras). -->
+    {% block aside %}
+    <!--  
+    <aside>
+        <h2>Conteúdo Relacionado</h2>
+        <ul>
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <li><a href="#">Link 4</a></li>
+        </ul>
+    </aside>
+    -->
+    {% endblock %}
+    
+    <!-- <main>: Conteúdo principal (artigos, seções, mídia). -->
     <main class="container">
+        <!-- <section>: Divisão temática do conteúdo que a página trata -->
+        <!-- <article>: post de blog, notícia em site de jornalismo, comentário ou postagem em fóruns ou redes sociais, artigo científico -->
         {% block sections %}
         <!-- Área que será substituída pelas seções da main das páginas filhas -->
         {% endblock %}
     </main>
     
-    {% include 'component/footer.html' %} <!-- Inclui o footer -->
+    <!-- <footer>: Informações de rodapé (contato, redes sociais, copyright, links). -->
+    {% include 'components/footer.html' %} <!-- Inclui o footer padrão -->
 
+    <!-- Script do menu-humbúrguer -->
+    <script type="text/javascript">
+        openMenu.addEventListener("click", () => {
+            menu.style.display = 'flex';
+
+            menu.style.right = (menu.offsetWidth * -1 ) + 'px';
+
+            openMenu.style.display = 'none';
+
+            setTimeout(() => {
+                menu.style.opacity = '1';
+                menu.style.right = '0';
+            }, 10)
+        })
+
+        closeMenu.addEventListener("click", () => {
+            menu.style.opacity = '1';
+
+            menu.style.right = (menu.offsetWidth * -1 ) + 'px';
+
+            setTimeout(() => {
+                menu.removeAttribute('style');
+                openMenu.removeAttribute('style');
+            }, 10)
+        })
+    </script>
     <!-- Inclui o arquivo JS global -->
     <script src="{% static 'js/script.js' %}"></script>
     <!-- Inclui os arquivos JS local a app -->

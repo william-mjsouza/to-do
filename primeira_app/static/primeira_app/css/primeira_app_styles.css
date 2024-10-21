@@ -1,3 +1,21 @@
-.container {
-    background-color: rgb(185, 184, 184);
+/* Variáveis pra palheta de cor escolhida */
+:root {
+    --nav-bg-color: #171717;
+    --main-bg-color: #afaaaa;
+    --aside-bg-color: #cac9c9;
+    --text-color: #000;
+    --link-color: #ececec;
+    --link-hover-color: #fff;
+    --button-color: #171717;
+}
+
+main {
+    height: calc(100vh - 221.5px);
+    align-items: center;
+    justify-content: center;
+    background: var(--main-bg-color);
+}
+
+.text-center {
+    margin: 10px;
 }

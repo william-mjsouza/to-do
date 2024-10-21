@@ -1,136 +1,193 @@
-/* Reset de margens e padding */
+@charset "UTF-8";
+
+/* Variáveis pra palheta de cor escolhida */
+:root {
+    --nav-bg-color: #171717;
+    --main-bg-color: #fff;
+    --aside-bg-color: #cac9c9;
+    --text-color: #000;
+    --link-color: #ececec;
+    --link-hover-color: #fff;
+    --button-color: #171717;
+}
+
+/* Toda vez que criar um site novo, remova os estilos padrão! */
 * {
-    border: 0;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style: none;
+    margin: 0;                      /* Remove a margem padrão */
+    padding: 0;                     /* Remove o espaçamento interno padrão */
+    list-style-type: none;          /* Remove os marcadores */
     text-decoration: none;
-}
-
-/* Definir a altura total do body para 100vh */
-.body {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;  /* Por enquanto */
-    font-family: Arial, sans-serif;
-}
-
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 2%;
-    padding-right: 2%;
-}
-
-.brand {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
+    border: none;
+    background: none;
     
+    text-align: center;
+    box-sizing: border-box;
 }
 
-button {
-    display: none;
+h1, h2, h3, h4, p {
+    color: var(--text-color);
 }
 
-/* Estilo para a navbar */
-.navbar {
-    background-color: #f8f9fa;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+a {
+    color: var(--link-color);
+    margin: 3%;
+    font-size: 1.5em;
 }
 
-.navbar-nav {
-    display: flex;
-    justify-content: space-between;
-}
-
-.nav-item {
-    margin-left: 20px;
-}
-
-.nav-link {
-    color: black;
-    font-size: 18px;
-}
-
-.nav-link:hover {
-    color: rgb(57, 57, 241);
+a:hover {
+    color: var(--link-hover-color);
     text-decoration: underline;
 }
 
-/* Estilo para o conteúdo principal */
-.container {
-    flex: 1;
+body {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-wrap: wrap;
+    flex: 1 1 100vw;
+}
+
+header, nav, main, aside, footer {
+    display: flex;
+    flex-wrap: wrap;
+/*  flex: ? ? ?; Cada um tem o seu específico!  */
+}
+
+header {
+    flex: 1 1 100vw;
+    height: 68.375px;   /* Esse valor depende do tamanho do footer */
+    flex-wrap: nowrap;
     align-items: center;
-    text-align: center;
+    background: var(--nav-bg-color);
+}
+
+#logo, #brand {
+    flex: 0 1 200px;
+    background: var(--header-bg-color);
+    color: var(--link-hover-color);
+}
+
+.hamburguerMenu {
+    font-size: 30px;
+    font-weight: bold;
+    padding: 0 5px 0 5px;
+    cursor: pointer;
+    display: none;
+}
+
+nav {
+    flex: 1 1 100vw;
+    /* Centraliza os links do menu tanto na vertical quanto na horizontal */
+    align-items: center;
+    justify-content: flex-end;  /* Menu posicionado a direita */
+    
+}
+
+main {
+    flex: 20 1 500px;
+    /* Permite criar uma main "infinita" */
+    flex-wrap: wrap;
+    overflow: auto;
+    background: var(--main-bg-color);
+}
+
+aside {
+    flex: 1 1 200px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
     padding: 20px;
+    background: var(--aside-bg-color);
 }
 
-/* Estilo para o footer */
-.footer {
-    background-color: #333;
-    color: #fff;
+aside ul {
+    width: 100%;
+}
+
+footer {
+    flex: 1 1 100vw;
+    align-items: center;
+    justify-content: center;
     padding: 20px;
-    text-align: center;
+    background: var(--nav-bg-color);
 }
 
-.footer p {
-    display: inline-block;
-    margin: 0;
-    font-size: 14px;
-}
-
-.navbar-footer {
-    display: inline-flex;
+.copyright {
+    color: var(--link-color);
 }
 
 .footer-links {
     display: flex;
-    justify-content: center;
-    margin-top: 10px;
-    gap: 20px;
 }
 
-.footer-links a {
-    color: #fff;
+.link {
+    display: flex;
+    margin: 0 20px 0 20px;
 }
 
-.footer-links a:hover {
-    text-decoration: underline;
-}
-
-@media (max-width: 450px) {
-    /* Efeito do Menu-Hambúrguer */
-    button {
-        display: block;
-        width: 20%;
-    
-        border: none;
-        background-color: transparent;
-    }
-    
-    .linha {
-        display: block;
-    
-        width: 66.66%;
-        height: 3.33%;
-    
-        margin: 10% auto;
-    
-        background-color: #ccc;
-    
-        cursor: pointer;
+/* Regra para quando aside e main não couberem na mesma linha */
+@media only screen and (max-width: 923px) {
+    header {
+        order: 0;
     }
 
-    header nav {
+    main {
+        order: 1
+    }
+
+    /* aside vai para debaixo da main */
+    aside {
+        flex: 1 1 100vw;
+        order: 2;
+    }
+
+    footer {
+        order: 3;
+    }
+}
+
+/* Regra para habilitar o menu-hambúrguer */
+@media only screen and (max-width: 804px) {
+    .hamburguerMenu {
+        display: block;
+    }
+
+    #openMenu {
+        margin-left: auto;
+        margin-right: 15px;
+        color: var(--text-color);
+        color: var(--link-color);
+    }
+
+    #closeMenu {
+        position: fixed;
+        right: 18px;
+        top: 19.2px;
+        color: var(--link-color);
+    }
+
+    #menu {
+        position: fixed;
+        top: 0;
+        flex-direction: column;
+        width: 100vw;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+        background: var(--nav-bg-color);
+        background: #171717ef;
+        
         display: none;
+        opacity: 0;
+        transition: 0.3s;
+    }
+}
+
+/* Regra para deixar o rodapé responsivo (depende da quantidade de ícones) */
+@media only screen and (max-width: 528px) {
+    .copyright {
+        margin-bottom: 10px;
+    }
+
+    .footer-links {
+        margin-top: 10px;
     }
 }

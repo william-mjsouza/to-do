@@ -1,7 +1,13 @@
 /* Estilo para o conteúdo principal da app (sobrescreve o global) */
 /* Estiliza o formulário e o campo de data */
+
 h1 {
     color: #333;
+}
+
+.container {
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 #datepicker {
@@ -88,4 +94,14 @@ input[type="submit"]:hover {
 .flatpickr-innerContainer {
     align-items: center;
     justify-content: center;
+}
+
+.commitment-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 482px;
+    width: 390px;
+    margin-top: 28px;
+    background-color: lightgray;
 }
