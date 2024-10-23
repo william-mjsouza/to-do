@@ -65,7 +65,7 @@ header {
     color: var(--link-hover-color);
 }
 
-.hamburguerMenu {
+.hamburguer-menu {
     font-size: 30px;
     font-weight: bold;
     padding: 0 5px 0 5px;
@@ -97,6 +97,7 @@ main {
     /* Permite criar uma main "infinita" */
     flex-wrap: wrap;
     overflow: auto;
+
     background: var(--main-bg-color);
 }
 
@@ -157,18 +158,18 @@ footer {
 
 /* Regra para habilitar o menu-hambúrguer */
 @media only screen and (max-width: 804px) {
-    .hamburguerMenu {
+    .hamburguer-menu {
         display: block;
     }
 
-    #openMenu {
+    #open-menu {
         margin-left: auto;
         margin-right: 15px;
         color: var(--text-color);
         color: var(--link-color);
     }
 
-    #closeMenu {
+    #close-menu {
         position: fixed;
         right: 18px;
         top: 19.2px;
@@ -197,7 +198,7 @@ footer {
         justify-content: center;
     }
     
-    .nav-link {
+    .menu-link {
         margin: 4%;
     }
 }

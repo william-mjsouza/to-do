@@ -1,4 +1,4 @@
-{% load static %} <!-- Sempre colocar esse load static se for usar um arquivo .css-->
+{% load static %} <!-- Sempre colocar esse load static se for usar um arquivo .css -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,42 +8,29 @@
     <!-- Ícones das redes sociais -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Inclui o arquivo CSS global -->
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Inclui o arquivo CSS global -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <!-- Inclui o arquivo CSS local a app (para sobrescrever o CSS das sections do global) -->
-    {% block extra_css %}
+    {% block extra_css %} 
     <!-- Área que será substituída pelo link CSS das páginas filhas -->
     {% endblock %}
 </head>
 <!-- Site com HTML Semântico: -->
-<body class="body">
+<body>
     <!-- <header>: Elementos como logo, navegação, títulos de seção e busca. -->
-    <header class="header">
-        <!-- 
-        <a href="#" id="logo">LOGO</a>
-        -->
-        <h1 id="brand">Meu Site</h1>
-        <button id="openMenu" class="hamburguerMenu">&#9776;</button>
+    {% block header %}
+    <!-- Área que será substituída pelo header das páginas filhas -->
         {% block nav %}
-        <!-- Área que será substituída pelas navbar das páginas filhas -->
+        <!-- Área que será substituída pela navbar das páginas filhas -->
         {% endblock %}
-    </header>
+    {% endblock %}
+
     <!-- <aside>: Conteúdo complementar ou relacionado (barra lateral, informações extras). -->
     {% block aside %}
-    <!--
-    <aside>
-        <h2>Conteúdo Relacionado</h2>
-        <ul>
-            <li><a href="#">Link 1</a></li>
-            <li><a href="#">Link 2</a></li>
-            <li><a href="#">Link 3</a></li>
-            <li><a href="#">Link 4</a></li>
-        </ul>
-    </aside>
-    -->
+    <!-- Área que será substituída pelo aside das páginas filhas -->
     {% endblock %}
     
     <!-- <main>: Conteúdo principal (artigos, seções, mídia). -->
-    <main class="main">
+    <main>
         <!-- <section>: Divisão temática do conteúdo que a página trata -->
         <!-- <article>: post de blog, notícia em site de jornalismo, comentário ou postagem em fóruns ou redes sociais, artigo científico -->
         {% block sections %}
@@ -53,14 +40,12 @@
     
     <!-- <footer>: Informações de rodapé (contato, redes sociais, copyright, links). -->
     {% block footer %}
-    <!-- Área que será substituída pelos scripts js das páginas filhas -->
+    <!-- Área que será substituída pelo footer das páginas filhas -->
     {% endblock %}
     
-    <!-- Inclui o arquivo JS global -->
-    <script src="{% static 'js/script.js' %}"></script>
-    <!-- Inclui os arquivos JS local a app -->
+    <!-- Nas apps, inclua aqui dentro os arquivos JS locais a app -->
     {% block extra_js %}
-    <!-- Área que será substituída pelos scripts js das páginas filhas -->
+    <!-- Área que será substituída pelos scripts JS das páginas filhas -->
     {% endblock %}
 </body>
 </html>

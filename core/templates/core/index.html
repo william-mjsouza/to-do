@@ -1,14 +1,23 @@
 {% extends 'base.html' %}   <!-- extends deve ser a primeira tag num template -->
-{% load static %}   <!-- Sempre colocar esse load static se for usar um arquivo .css-->
+{% load static %}   <!-- Sempre colocar esse load static se for usar um arquivo .css -->
 
 {% block title %}Página Inicial{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'core/css/core_page_styles.css' %}">   <!-- Colocar um nome diferente de styles no arquivo .css (para não dar conflito com o arquivo .css global) -->
+<link rel="stylesheet" href="{% static 'core/css/core_page_styles.css' %}">
 {% endblock %}
 
-{% block nav %}
-{% include 'components/nav.html' %}  <!-- Inclui a navbar padrão -->
+{% block header %}
+<header>
+    <!-- 
+    <a href="#" id="logo">LOGO</a>
+    -->
+    <h1 id="brand">Meu Site</h1>
+    <button id="open-menu" class="hamburguer-menu">&#9776;</button>
+    {% block nav %}
+    {% include 'components/nav.html' %}  <!-- Inclui a navbar padrão -->
+    {% endblock %}
+</header>
 {% endblock %}
 
 {% block sections %}
@@ -18,36 +27,24 @@
 </section>
 {% endblock %}
 
+{% block aside %}
+    <!--
+    <aside>
+        <h2>Conteúdo Relacionado</h2>
+        <ul>
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <li><a href="#">Link 4</a></li>
+        </ul>
+    </aside>
+    -->
+{% endblock %}
+
 {% block footer %}
-<!-- Área que será substituída pelos scripts js das páginas filhas -->
 {% include 'components/footer.html' %} <!-- Inclui o footer padrão -->
 {% endblock %}
 
 {% block extra_js %}
-<!-- Script do menu-humbúrguer -->
-<script type="text/javascript">
-    openMenu.addEventListener("click", () => {
-        menu.style.display = 'flex';
-
-        menu.style.right = (menu.offsetWidth * -1 ) + 'px';
-
-        openMenu.style.display = 'none';
-
-        setTimeout(() => {
-            menu.style.opacity = '1';
-            menu.style.right = '0';
-        }, 10)
-    })
-
-    closeMenu.addEventListener("click", () => {
-        menu.style.opacity = '1';
-
-        menu.style.right = (menu.offsetWidth * -1 ) + 'px';
-
-        setTimeout(() => {
-            menu.removeAttribute('style');
-            openMenu.removeAttribute('style');
-        }, 10)
-    })
-</script>
+<script src="{% static 'js/hamburgerMenu.js' %}"></script>  <!-- Inclui o arquivo JS do menu-hambúrguer -->
 {% endblock %}
