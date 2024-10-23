@@ -30,7 +30,6 @@ h1, h2, h3, h4, p {
 
 a {
     color: var(--link-color);
-    margin: 3%;
     font-size: 1.5em;
 }
 
@@ -56,6 +55,7 @@ header {
     height: 68.375px;   /* Esse valor depende do tamanho do footer */
     flex-wrap: nowrap;
     align-items: center;
+    justify-content: space-between;
     background: var(--nav-bg-color);
 }
 
@@ -79,6 +79,17 @@ nav {
     align-items: center;
     justify-content: flex-end;  /* Menu posicionado a direita */
     
+}
+
+.menu-links {
+    display: flex;
+    justify-content: end;
+    white-space: nowrap;
+}
+
+.menu-link {
+    display: flex;
+    margin-right: 5%;
 }
 
 main {
@@ -178,6 +189,16 @@ footer {
         display: none;
         opacity: 0;
         transition: 0.3s;
+    }
+
+    .menu-links {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .nav-link {
+        margin: 4%;
     }
 }
 

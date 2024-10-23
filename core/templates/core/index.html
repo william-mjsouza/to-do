@@ -7,9 +7,47 @@
 <link rel="stylesheet" href="{% static 'core/css/core_page_styles.css' %}">   <!-- Colocar um nome diferente de styles no arquivo .css (para não dar conflito com o arquivo .css global) -->
 {% endblock %}
 
+{% block nav %}
+{% include 'components/nav.html' %}  <!-- Inclui a navbar padrão -->
+{% endblock %}
+
 {% block sections %}
 <section class="text-center">
     <h1>Bem-vindo à Página Inicial</h1>
     <p>Esta é a página inicial do meu site, construída com Django!</p>
 </section>
+{% endblock %}
+
+{% block footer %}
+<!-- Área que será substituída pelos scripts js das páginas filhas -->
+{% include 'components/footer.html' %} <!-- Inclui o footer padrão -->
+{% endblock %}
+
+{% block extra_js %}
+<!-- Script do menu-humbúrguer -->
+<script type="text/javascript">
+    openMenu.addEventListener("click", () => {
+        menu.style.display = 'flex';
+
+        menu.style.right = (menu.offsetWidth * -1 ) + 'px';
+
+        openMenu.style.display = 'none';
+
+        setTimeout(() => {
+            menu.style.opacity = '1';
+            menu.style.right = '0';
+        }, 10)
+    })
+
+    closeMenu.addEventListener("click", () => {
+        menu.style.opacity = '1';
+
+        menu.style.right = (menu.offsetWidth * -1 ) + 'px';
+
+        setTimeout(() => {
+            menu.removeAttribute('style');
+            openMenu.removeAttribute('style');
+        }, 10)
+    })
+</script>
 {% endblock %}

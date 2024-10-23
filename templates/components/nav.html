@@ -1,8 +1,10 @@
 <!-- Componente navbar padrão -->
 <nav id="menu">
     <button id="closeMenu" class="hamburguerMenu">X</button>
-    <a class="nav-link" href="{% url 'index' %}">Home</a>
-    <a class="nav-link" href="{% url 'primeira_app' %}">Primeira App</a>
-    <a class="nav-link" href="{% url 'agenda' %}">Segunda App</a>
-    <a class="nav-link" href="{% url 'meu_ip' %}">Terceira App</a>
+    <ul class="menu-links">
+        <li class="menu-link"><a href="{% url 'index' %}">Home</a></li>
+        <li class="menu-link"><a href="{% url 'primeira_app' %}">Primeira App</a></li>
+        <li class="menu-link"><a href="{% url 'agenda' %}">Segunda App</a></li>
+        <li class="menu-link"><a href="{% url 'meu_ip' %}">Terceira App</a></li>
+    </ul>
 </nav>
